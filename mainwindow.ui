@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QWidget" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>480</width>
+    <height>272</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <widget class="QPushButton" name="bt_Server">
+   <property name="geometry">
+    <rect>
+     <x>270</x>
+     <y>90</y>
+     <width>121</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Server</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="bt_Client">
+   <property name="geometry">
+    <rect>
+     <x>80</x>
+     <y>90</y>
+     <width>121</width>
+     <height>91</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Client</string>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>bt_Server</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>creatServer()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>400</x>
+     <y>180</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>141</x>
+     <y>223</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>bt_Client</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>creatClient()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>406</x>
+     <y>70</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>356</x>
+     <y>230</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>creatServer()</slot>
+  <slot>creatClient()</slot>
+  <slot>connectWifi()</slot>
+  <slot>disconnectWifi()</slot>
+ </slots>
+</ui>
