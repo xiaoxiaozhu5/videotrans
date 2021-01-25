@@ -1,7 +1,7 @@
 #ifndef CLIENT_H
 #define CLIENT_H
 
-#include <QtGui/QWidget>
+#include <QWidget>
 #include <QUdpSocket>
 #include <QImage>
 #include "udp.h"

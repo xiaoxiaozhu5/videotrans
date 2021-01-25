@@ -1,7 +1,7 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include <QtGui/QWidget>
+#include <QWidget>
 #include "widget.h"
 #include "client.h"
 #include <QFile>

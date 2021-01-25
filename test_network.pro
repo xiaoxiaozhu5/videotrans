@@ -1,7 +1,7 @@
 # -------------------------------------------------
 # Project created by QtCreator 2015-03-20T06:58:03
 # -------------------------------------------------
-QT += network
+QT += network widgets
 TARGET = test_network
 TEMPLATE = app
 SOURCES += main.cpp \

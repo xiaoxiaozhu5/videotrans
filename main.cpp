@@ -1,11 +1,8 @@
-#include <QtGui/QApplication>
+#include <QApplication>
+
 #include "mainwindow.h"
 #include "widget.h"
 #include "config.h"
-
-#ifdef OK6410
-    #include <QWSServer>
-#endif
 
 int main(int argc, char *argv[])
 {
@@ -16,10 +13,9 @@ int main(int argc, char *argv[])
     system("iwlist wlan0 scan");
     system("iwconfig wlan0 essid \"forlinux\"");
     system("ifconfig wlan0 192.168.1.111");
-
-    QWSServer::setCursorVisible(false);//Hide the cursor
 #endif
-    QApplication a(argc, argv,QApplication::GuiServer);
+    QApplication a(argc, argv);
+
     MainWindow m;
     m.setWindowTitle("Video Transmission");
     m.show();
