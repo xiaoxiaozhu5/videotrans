@@ -2,26 +2,25 @@
 
 MyThread::MyThread()
 {
-    runing = 1;
-    begin = 1;
+    runing_ = 1;
 
 #ifdef OK6410
     vd = new VideoDevice(tr("/dev/video2"));
 #else
-    vd = new VideoDevice(tr("/dev/video0"));
+    vd_ = new VideoDevice(tr("/dev/video0"));
 #endif
 
-    if(-1 == vd->open_device())
+    if(-1 == vd_->open_device())
     {
         exit(EXIT_FAILURE);
     }
 
-    if(-1 == vd->init_device())
+    if(-1 == vd_->init_device())
     {
         exit(EXIT_FAILURE);
     }
 
-    if(-1 == vd->start_capturing())
+    if(-1 == vd_->start_capturing())
     {
         exit(EXIT_FAILURE);
     }
@@ -29,15 +28,15 @@ MyThread::MyThread()
 
 MyThread::~MyThread()
 {
-    if(-1 == vd->stop_capturing())
+    if(-1 == vd_->stop_capturing())
         {
             exit(EXIT_FAILURE);
         }
-    if(-1 == vd->uninit_device())
+    if(-1 == vd_->uninit_device())
         {
         exit(EXIT_FAILURE);
         }
-    if(-1 == vd->close_device())
+    if(-1 == vd_->close_device())
         {
             exit(EXIT_FAILURE);
         }
@@ -45,22 +44,20 @@ MyThread::~MyThread()
 
 void MyThread::run()
 {
-    udp = new Udp();
+    udp_ = new Udp();
     char* frame;
     size_t frame_len;
 
-    while(runing && begin)
+    while(runing_)
     {
-        if(-1 == vd->get_frame((void**)&frame, &frame_len))
+        if(-1 == vd_->get_frame((void**)&frame, &frame_len))
         {
             exit(EXIT_FAILURE);
         }
 
+        udp_->sendData((char *)frame, frame_len);
 
-        udp->sendData((char *)frame, frame_len);
-
-
-        if(-1 == vd->unget_frame())
+        if(-1 == vd_->unget_frame())
         {
             exit(EXIT_FAILURE);
         }
@@ -70,5 +67,5 @@ void MyThread::run()
 
 void MyThread::stop()
 {
-    runing = 0;
+    runing_ = 0;
 }

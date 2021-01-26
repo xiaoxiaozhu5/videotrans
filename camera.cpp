@@ -2,7 +2,16 @@
 #include "ui_camera.h"
 #include "widget.h"
 
-class Widget *showmess;
+Widget *showmess;
+
+void image_cleanup_function(void* p)
+{
+    qDebug() << "cleanup called\n";
+    if(p)
+    {
+        free(p);
+    }
+}
 
 camera::camera(QWidget *parent) :
     QWidget(parent),
@@ -11,7 +20,7 @@ camera::camera(QWidget *parent) :
     m_ui->setupUi(this);
     pp = (unsigned char *)malloc(320 * 240 * 3 * sizeof(char));
     timer = new QTimer(this);
-    frame = new QImage(pp,320,240,QImage::Format_RGB888);
+    frame = new QImage(pp,320,240,QImage::Format_RGB888, image_cleanup_function);
     initialDevice();
     connect(timer,SIGNAL(timeout()),this,SLOT(readframe()));
 }
@@ -27,7 +36,6 @@ void camera::back2main()
     rs = vd->stop_capturing();
     rs = vd->uninit_device();
     rs = vd->close_device();
-    free(pp);
     close();
 }
 

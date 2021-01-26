@@ -44,6 +44,7 @@ void Widget::startTCP()
 
 //    YUV422To420(frame,converted,320,240);
     display_error("Starting transfering......");
+    mythread->deleteLater();
 }
 
 

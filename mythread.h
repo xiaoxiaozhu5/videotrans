@@ -18,10 +18,9 @@ public:
     void run();
     void stop();
 private:
-    VideoDevice *vd;
-    Udp *udp;
-    int runing;
-    int begin;
+    VideoDevice *vd_;
+    Udp *udp_;
+    int runing_;
 };
 
 #endif // MYTHREAD_H

@@ -6,7 +6,6 @@
 #include <QImage>
 #include "udp.h"
 
-#define PAYLOAD_SIZE (30*1024)
 #define PACKET_NUM 7
 #define PACKAGE_SIZE (PAYLOAD_SIZE*PACKET_NUM)
 
@@ -17,13 +16,13 @@ namespace Ui {
 class Client : public QWidget {
     Q_OBJECT
 public:
-    Client(QWidget *parent = 0);
+    explicit Client(QWidget *parent = Q_NULLPTR);
     ~Client();
     void process(DataPacket *packet);
     void updatePicture();
 
 protected:
-    void changeEvent(QEvent *e);
+    void changeEvent(QEvent *e) override;
 
 private:
     Ui::Client *m_ui;

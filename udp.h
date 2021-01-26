@@ -5,7 +5,7 @@
 #include <QThread>
 #include "widget.h"
 
-#define PAYLOAD_SIZE 30*1024
+#define PAYLOAD_SIZE (30*1024)
 
 class Widget;
 

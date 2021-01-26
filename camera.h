@@ -14,7 +14,7 @@ namespace Ui {
 class camera : public QWidget {
     Q_OBJECT
 public:
-    camera(QWidget *parent = 0);
+    explicit camera(QWidget *parent = Q_NULLPTR);
     ~camera();
     void initialDevice();
 
@@ -23,7 +23,7 @@ protected:
 
 private:
     Ui::camera *m_ui;
-    class VideoDevice *vd;
+    VideoDevice *vd;
     QImage *frame;
     QTimer *timer;
     int rs;

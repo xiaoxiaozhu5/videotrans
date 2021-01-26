@@ -5,11 +5,10 @@ Udp::Udp(QObject *parent) :
     QThread(parent)
 {
 
-    port = 8080;
-    addr = QHostAddress("192.168.1.111");
+    port = PORT;
+    addr = QHostAddress(ADDRESS);
 //    addr = QHostAddress::LocalHost;
     data_packet = new DataPacket();
-
     socket = new QUdpSocket();
 }
 
